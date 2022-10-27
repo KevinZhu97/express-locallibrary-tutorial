@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{genre.name}
+
+  if genre_books.length 
+  
+    p There are still books with this genre in the database
+
+    h4 Books
+    dl 
+    each book in genre_books 
+      dt 
+        a(href=book.url) #{book.title}
+      dd #{book.summary}
+
+  else
+
+  p Do you really want to delete this genre? 
+
+  form(method='POST' action="") 
+    button.btn.btn-primary(type="submit") Delete
+      
